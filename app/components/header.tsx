@@ -12,7 +12,7 @@ const Header = () => {
             <img src="/logo.png" alt="Kupi Global Logo" />
           </div>
           <div className="w-56">
-            <h1 className="text-2xl font-bold text-amber-600">Kupi Global</h1>
+            <h1 className="text-2xl font-bold text-primary">Kupi Global</h1>
             <h2 className="text-lg font-semibold text-gray-700 leading-tight">
               International shipping service
             </h2>
