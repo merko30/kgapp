@@ -22,17 +22,6 @@ const Info = ({ data }: { data: { slug: string; html_content: string }[] }) => {
 
   const [activeTab, setActiveTab] = useState("notifications");
 
-  const noticeContent =
-    data.find((page) => page.slug === "notice")?.html_content || "";
-  const aboutUsContent =
-    data.find((page) => page.slug === "about-us")?.html_content || "";
-  const contactContent =
-    data.find((page) => page.slug === "contact")?.html_content || "";
-  const storesContent =
-    data.find((page) => page.slug === "stores")?.html_content || "";
-  const legalInfoContent =
-    data.find((page) => page.slug === "legal-information")?.html_content || "";
-
   return (
     <Card className="py-4">
       <Tabs
@@ -55,14 +44,14 @@ const Info = ({ data }: { data: { slug: string; html_content: string }[] }) => {
           <div dangerouslySetInnerHTML={{ __html: data[0].html_content }} />
         </TabsContent>
         <TabsContent value="about-us">
-          <div dangerouslySetInnerHTML={{ __html: aboutUsContent }} />
+          {/* <div dangerouslySetInnerHTML={{ __html: aboutUsContent }} /> */}
         </TabsContent>
         <TabsContent value="contact">
-          <div dangerouslySetInnerHTML={{ __html: contactContent }} />
+          {/* <div dangerouslySetInnerHTML={{ __html: contactContent }} /> */}
         </TabsContent>
         <TabsContent value="stores">//</TabsContent>
         <TabsContent value="legal-information">
-          <div dangerouslySetInnerHTML={{ __html: legalInfoContent }} />
+          {/* <div dangerouslySetInnerHTML={{ __html: legalInfoContent }} /> */}
         </TabsContent>
       </Tabs>
     </Card>
