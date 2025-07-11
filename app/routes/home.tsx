@@ -12,6 +12,13 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export default function Home() {
-  return <Welcome />;
+export async function loader() {
+  const supabase = (await import("~/lib/supabase")).default;
+  const response = await supabase.from("pages").select("*");
+  return { pages: response?.data || [] };
+}
+
+export default function Home({ loaderData }: Route.ComponentProps) {
+  const { pages } = loaderData;
+  return <Welcome pages={pages} />;
 }

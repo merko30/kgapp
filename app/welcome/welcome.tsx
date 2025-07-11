@@ -1,10 +1,15 @@
 import { useTranslation } from "react-i18next";
-import HomeInfo from "~/components/homeinfo";
 import { Button } from "~/components/ui/button";
 import { Card } from "~/components/ui/card";
 import { Input } from "~/components/ui/input";
 
-export function Welcome() {
+import HomeInfo from "./info";
+
+export function Welcome({
+  pages,
+}: {
+  pages?: any; // Adjust type as necessary
+}) {
   const { t } = useTranslation();
   return (
     <div className="w-full container flex flex-col md:flex-row gap-8 md:gap-4">
@@ -16,7 +21,7 @@ export function Welcome() {
         </Card>
       </div>
       <div className="w-full md:w-2/3">
-        <HomeInfo />
+        <HomeInfo data={pages} />
       </div>
     </div>
   );
