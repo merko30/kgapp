@@ -3,7 +3,7 @@ export async function loader() {
   const response = await supabase
     .from("pages")
     .select("html_content")
-    .eq("slug", "notifications")
+    .eq("slug", "notice")
     .single();
   return { html_content: response.data?.html_content || "" };
 }
