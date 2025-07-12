@@ -31,6 +31,7 @@ i18n
           stores: "Online stores",
           legalInformation: "Legal information",
           dashboard: "Dashboard",
+          wrongCredentials: "Wrong credentials",
         },
       },
       bs: {
@@ -45,6 +46,7 @@ i18n
           stores: "Online trgovine",
           legalInformation: "Pravne informacije",
           dashboard: "Korisnički panel",
+          wrongCredentials: "Pogrešni podaci",
         },
       },
     },
