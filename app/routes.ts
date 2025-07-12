@@ -8,4 +8,10 @@ export default [
     route("stores", "routes/home/stores.tsx"),
     route("legal-information", "routes/home/legal-information.tsx"),
   ]),
+  route("/dashboard", "routes/dashboard/index.tsx", [
+    index("routes/dashboard/orders.tsx"),
+    index("routes/dashboard/packages.tsx"),
+    index("routes/dashboard/history.tsx"),
+    index("routes/dashboard/invoices.tsx"),
+  ]),
 ] satisfies RouteConfig;

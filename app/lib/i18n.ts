@@ -30,6 +30,7 @@ i18n
           contact: "Contact us",
           stores: "Online stores",
           legalInformation: "Legal information",
+          dashboard: "Dashboard",
         },
       },
       bs: {
@@ -43,6 +44,7 @@ i18n
           contact: "Kontaktiraj nas",
           stores: "Online trgovine",
           legalInformation: "Pravne informacije",
+          dashboard: "Korisnički panel",
         },
       },
     },

@@ -3,7 +3,6 @@ import { Link, Outlet } from "react-router";
 import Login from "~/components/login";
 import { Card } from "~/components/ui/card";
 import { Tabs, TabsList, TabsTrigger } from "~/components/ui/tabs";
-import type { Route } from "./+types";
 
 const TABS = [
   { value: "/", label: "notifications" },
