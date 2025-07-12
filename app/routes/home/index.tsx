@@ -14,6 +14,17 @@ const TABS = [
   { value: "/legal-information", label: "legalInformation" },
 ];
 
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "Kupi Global" },
+    { name: "description", content: "Logistic Software" },
+    {
+      name: "keywords",
+      content: "logistics, software, kupi, global, delivery, shipping",
+    },
+  ];
+}
+
 export async function action({ request }: Route.ActionArgs) {
   let formData = await request.formData();
   let email = formData.get("email")?.toString();

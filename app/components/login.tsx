@@ -26,7 +26,7 @@ const Login = ({
           name="email"
           type="email"
           required
-          placeholder={t("emailID/userID")}
+          placeholder={t("emailID")}
           className="mb-4"
         />
         <Input

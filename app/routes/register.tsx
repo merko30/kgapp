@@ -1,96 +1,178 @@
 import { useTranslation } from "react-i18next";
 import { Form } from "react-router";
-import { Card } from "../components/ui/card";
+import { Card, CardTitle } from "../components/ui/card";
 import { Input } from "../components/ui/input";
+import { Label } from "../components/ui/label";
 import { Button } from "../components/ui/button";
+import { Select } from "~/components/ui/select";
+import {
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectGroup,
+  SelectLabel,
+  SelectItem,
+} from "../components/ui/select";
 
 const Register = () => {
   const { t } = useTranslation();
 
   return (
-    <Card className="px-4">
+    <Card className="px-4 max-w-3xl mx-auto">
+      <CardTitle>{t("memberRegistration")}</CardTitle>
       <Form method="post">
-        <h2 className="text-xl font-bold mb-4">{t("memberRegistration")}</h2>
         <div className="flex flex-col md:flex-row gap-4 mb-4">
           <div className="w-full md:w-1/2 flex flex-col gap-4">
-            <div>
-              <label className="block mb-1">{t("accountType")}</label>
-              <select
-                name="accountType"
-                required
-                className="w-full border border-gray-50"
-              >
-                <option value="INDIVIDUAL">INDIVIDUAL</option>
-              </select>
-            </div>
-            <Input name="firstName" required placeholder={t("firstName")} />
-            <Input name="lastName" required placeholder={t("lastName")} />
+            <Label>{t("accountType")}</Label>
+            <Select name="accountType" required>
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder={t("accountType")} className="py-2" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  <SelectLabel>{t("accountType")}</SelectLabel>
+                  <SelectItem value="INDIVIDUAL">{t("individual")}</SelectItem>
+                  <SelectItem value="BUSINESS">{t("business")}</SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+            <Label htmlFor="firstName">{t("firstName")}</Label>
             <Input
+              id="firstName"
+              name="firstName"
+              required
+              placeholder={t("firstName")}
+            />
+            <Label htmlFor="lastName">{t("lastName")}</Label>
+            <Input
+              id="lastName"
+              name="lastName"
+              required
+              placeholder={t("lastName")}
+            />
+            <Label htmlFor="email">{t("email")}</Label>
+            <Input
+              id="email"
               name="email"
               type="email"
               required
               placeholder={t("email")}
             />
-            <div>
-              <label className="block mb-1">{t("gender")}</label>
-              <label className="mr-2">
-                <input type="radio" name="gender" value="Male" required />{" "}
+            <Label>{t("gender")}</Label>
+            <div className="flex gap-4 mb-2">
+              <Label htmlFor="gender-male" className="flex items-center gap-2">
+                <input
+                  id="gender-male"
+                  type="radio"
+                  name="gender"
+                  value="Male"
+                  required
+                />
                 {t("male")}
-              </label>
-              <label>
-                <input type="radio" name="gender" value="Female" required />{" "}
+              </Label>
+              <Label
+                htmlFor="gender-female"
+                className="flex items-center gap-2"
+              >
+                <input
+                  id="gender-female"
+                  type="radio"
+                  name="gender"
+                  value="Female"
+                  required
+                />
                 {t("female")}
-              </label>
+              </Label>
             </div>
-            <div>
-              <label className="block mb-1">{t("profileImage")}</label>
-              <Input
-                name="profileImage"
-                type="file"
-                accept=".png,.jpg,.jpeg,.gif"
-                className="mb-2"
-              />
-              <small>{t("uploadImageHelp")}</small>
-            </div>
+            <Label htmlFor="profileImage">{t("profileImage")}</Label>
+            <Input
+              id="profileImage"
+              name="profileImage"
+              type="file"
+              accept=".png,.jpg,.jpeg,.gif"
+              className="mb-2"
+            />
+            <small>{t("uploadImageHelp")}</small>
           </div>
           <div className="w-full md:w-1/2 flex flex-col gap-4">
-            <Input name="address1" required placeholder={t("address1")} />
-            <Input name="address2" placeholder={t("address2")} />
+            <Label htmlFor="address1">{t("address1")}</Label>
             <Input
+              id="address1"
+              name="address1"
+              required
+              placeholder={t("address1")}
+            />
+            <Label htmlFor="address2">{t("address2")}</Label>
+            <Input id="address2" name="address2" placeholder={t("address2")} />
+            <Label>{t("country")}</Label>
+            <Select
               name="country"
               required
-              placeholder={t("country")}
-              defaultValue="Bosnia and Herzegovina"
-            />
+              disabled
+              defaultValue="Bosna i Hercegovina"
+            >
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder={t("country")} className="py-2" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  <SelectLabel>{t("country")}</SelectLabel>
+                  <SelectItem value="Bosna i Hercegovina">
+                    Bosna i Hercegovina
+                  </SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+            <Label htmlFor="city">{t("citySelect")}</Label>
+            <Input id="city" name="city" placeholder={t("citySelect")} />
+            <Label htmlFor="postalCode">{t("postalCode")}</Label>
             <Input
-              name="state"
-              required
-              placeholder={t("state")}
-              defaultValue="Bosnia and Herzegovina"
+              id="postalCode"
+              name="postalCode"
+              placeholder={t("postalCode")}
             />
-            <Input name="city" placeholder={t("citySelect")} />
-            <Input name="postalCode" placeholder={t("postalCode")} />
             <div>
-              <label className="block mb-1">{t("bosniaHerzegovinaCode")}</label>
-              <Input name="phone" required placeholder={t("phoneNumber")} />
+              <Label htmlFor="phone" className="mb-4">
+                {t("phoneNumber")}
+              </Label>
+              <Input
+                id="phone"
+                name="phone"
+                required
+                placeholder={t("phoneNumber")}
+                pattern="^\+387[0-9]{8,9}$"
+                title={t("bosniaHerzegovinaCode")}
+              />
             </div>
           </div>
         </div>
         <div className="flex flex-col md:flex-row gap-4 mb-4">
-          <Input
-            name="password"
-            type="password"
-            required
-            min={8}
-            placeholder={t("password")}
-          />
-          <Input
-            name="confirmPassword"
-            type="password"
-            required
-            min={8}
-            placeholder={t("confirmPassword")}
-          />
+          <div className="flex-1">
+            <Label htmlFor="password" className="mb-4">
+              {t("password")}
+            </Label>
+            <Input
+              id="password"
+              name="password"
+              type="password"
+              required
+              min={8}
+              placeholder={t("password")}
+            />
+          </div>
+          <div className="flex-1">
+            <Label htmlFor="confirmPassword" className="mb-4">
+              {t("confirmPassword")}
+            </Label>
+            <Input
+              id="confirmPassword"
+              name="confirmPassword"
+              type="password"
+              required
+              min={8}
+              placeholder={t("confirmPassword")}
+            />
+          </div>
         </div>
 
         <div className="mb-4">

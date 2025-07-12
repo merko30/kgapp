@@ -21,9 +21,11 @@ i18n
     resources: {
       en: {
         translation: {
+          individual: "Individual",
+          business: "Business",
           register: "Register",
           login: "Sign in",
-          emailIDuserID: "Email or user ID",
+          emailID: "Email or user ID",
           password: "Password",
           notifications: "Notifications",
           aboutUs: "About us",
@@ -56,9 +58,11 @@ i18n
       },
       bs: {
         translation: {
+          individual: "Fizičko lice",
+          business: "Biznis",
           register: "Registriraj se",
           login: "Prijavi se",
-          emailIDuserID: "Email ili korisnički ID",
+          emailID: "Email ili korisnički ID",
           password: "Lozinka",
           notifications: "Notifikacije",
           aboutUs: "O nama",
@@ -67,7 +71,7 @@ i18n
           legalInformation: "Pravne informacije",
           dashboard: "Korisnički panel",
           wrongCredentials: "Pogrešni podaci",
-          memberRegistration: "Registracija članova",
+          memberRegistration: "Registracija",
           accountType: "Vrsta računa",
           firstName: "Ime",
           lastName: "Prezime",
@@ -82,7 +86,7 @@ i18n
           address2: "Adresa 2",
           country: "Zemlja",
           state: "Država",
-          citySelect: "Grad (Izaberite grad)",
+          citySelect: "Grad",
           postalCode: "Poštanski broj",
           bosniaHerzegovinaCode: "Bosna i Hercegovina (+387)",
           phoneNumber: "Broj telefona",

@@ -1,3 +1,16 @@
+import type { Route } from "../../+types/root";
+
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "Kupi Global" },
+    { name: "description", content: "Logistic Software" },
+    {
+      name: "keywords",
+      content: "logistics, software, kupi, global, delivery, shipping",
+    },
+  ];
+}
+
 export async function loader() {
   const supabase = (await import("~/lib/supabase")).default;
   const response = await supabase
