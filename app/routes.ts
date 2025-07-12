@@ -14,4 +14,5 @@ export default [
     index("routes/dashboard/history.tsx"),
     index("routes/dashboard/invoices.tsx"),
   ]),
+  route("/register", "routes/register.tsx"),
 ] satisfies RouteConfig;
