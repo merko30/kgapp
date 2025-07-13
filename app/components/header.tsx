@@ -1,8 +1,27 @@
+import type { Session } from "@supabase/supabase-js";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
+import supabase from "~/lib/supabase";
 
 const Header = () => {
   const { t, i18n } = useTranslation();
+
+  const [user, setUser] = useState<Session | null>(null);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const response = await supabase.auth.getSession();
+      console.log(response);
+      if (response?.data?.session) {
+        setUser(response.data.session);
+      }
+    };
+
+    fetchUser();
+  }, []);
+
+  console.log(user);
 
   return (
     <header className="py-6 shadow-lg sticky top-0 bg-white z-10">
@@ -35,16 +54,26 @@ const Header = () => {
             </span>
           </div>
           <ul className="flex space-x-4">
-            <li>
-              <a href="/register" className="tracking-widest uppercase text-sm">
-                {t("register")}
-              </a>
-            </li>
-            <li>
-              <a href="/login" className="tracking-widest uppercase text-sm">
-                {t("login")}
-              </a>
-            </li>
+            {!user && (
+              <li>
+                <a
+                  href="/register"
+                  className="tracking-widest uppercase text-sm"
+                >
+                  {t("register")}
+                </a>
+              </li>
+            )}
+            {user && (
+              <li>
+                <a
+                  href="/profile"
+                  className="tracking-widest uppercase text-sm"
+                >
+                  Profil
+                </a>
+              </li>
+            )}
           </ul>
         </nav>
       </div>

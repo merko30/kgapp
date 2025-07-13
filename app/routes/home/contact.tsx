@@ -1,5 +1,5 @@
 export async function loader() {
-  const supabase = (await import("~/lib/supabase")).default;
+  const supabase = (await import("~/lib//supabase")).default;
   const response = await supabase
     .from("pages")
     .select("html_content")

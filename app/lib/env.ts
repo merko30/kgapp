@@ -2,8 +2,8 @@ import { camelKeys } from "string-ts";
 import { z } from "zod";
 
 const schema = z.object({
-  SUPABASE_URL: z.string().min(1),
-  SUPABASE_KEY: z.string().min(1),
+  VITE_SUPABASE_URL: z.string().min(1),
+  VITE_SUPABASE_KEY: z.string().min(1),
 });
 
 function makeTypedEnv<T>(schema: { parse: (data: unknown) => T }) {
@@ -12,4 +12,9 @@ function makeTypedEnv<T>(schema: { parse: (data: unknown) => T }) {
 
 export const getEnvFrom = makeTypedEnv(schema);
 
-export const getEnv = () => getEnvFrom(process.env);
+export const getEnv = () => {
+  if (typeof window !== "undefined") {
+    return getEnvFrom(import.meta.env);
+  }
+  return getEnvFrom(process.env);
+};

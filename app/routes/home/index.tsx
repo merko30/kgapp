@@ -25,42 +25,18 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export async function action({ request }: Route.ActionArgs) {
-  let formData = await request.formData();
-  let email = formData.get("email")?.toString();
-  let password = formData.get("password")?.toString();
-
-  if (!email || !password) {
-    return {
-      error: "Please provide credentials",
-    };
-  } else {
-    const response = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
-
-    console.log("RESPONSE", response);
-    if (response.error) {
-      return {
-        error: "wrongCredentials",
-      };
-    }
-  }
-}
-
-const Home = ({ actionData }: Route.ComponentProps) => {
+const Home = () => {
   const { t } = useTranslation();
 
   return (
     <div className="w-full container flex flex-col md:flex-row gap-8 md:gap-4">
       <div className="w-full md:w-1/3">
-        <Login data={actionData} />
+        <Login />
       </div>
       <div className="w-full md:w-2/3">
         <Card className="py-4">
           <Tabs className="px-4">
-            <TabsList className="w-full">
+            <TabsList className="w-full h-auto flex-col md:flex-row">
               {TABS.map((tab) => (
                 <TabsTrigger key={tab.value} value={tab.value} asChild>
                   <Link to={tab.value} className="w-full">

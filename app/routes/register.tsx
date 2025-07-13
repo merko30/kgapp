@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
-import { Form } from "react-router";
+import { Form, redirect } from "react-router";
 import { Card, CardTitle } from "../components/ui/card";
+import type { Route } from "../+types/root";
 import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
 import { Button } from "../components/ui/button";
@@ -13,6 +14,56 @@ import {
   SelectLabel,
   SelectItem,
 } from "../components/ui/select";
+import supabase from "~/lib/supabase";
+
+export async function action({ request }: Route.ActionArgs) {
+  let formData = await request.formData();
+  let email = formData.get("email")?.toString();
+  let password = formData.get("password")?.toString();
+  let phone = formData.get("phone")?.toString();
+  let firstName = formData.get("firstName")?.toString();
+  let lastName = formData.get("lastName")?.toString();
+  let address1 = formData.get("address1")?.toString();
+  let address2 = formData.get("address2")?.toString();
+  let city = formData.get("city")?.toString();
+  let postalCode = formData.get("postalCode")?.toString();
+  let country = formData.get("country")?.toString();
+  let accountType = formData.get("accountType")?.toString();
+
+  const data = {
+    firstName,
+    lastName,
+    email,
+    phone,
+    address1,
+    address2,
+    city,
+    postalCode,
+    country,
+    accountType,
+  };
+
+  if (!email || !password) {
+    return {
+      error: "Please provide credentials",
+    };
+  } else {
+    const response = await supabase.auth.signUp({
+      options: { data },
+      email,
+      password,
+    });
+
+    console.log("RESPONSE", response);
+    if (response.error) {
+      return {
+        error: "wrongCredentials",
+      };
+    } else {
+      return redirect("/dashboard");
+    }
+  }
+}
 
 const Register = () => {
   const { t } = useTranslation();
