@@ -1,27 +1,32 @@
-import { parseCookieHeader, serializeCookieHeader } from "@supabase/ssr";
-import { createServerClient } from "@supabase/ssr";
+import {
+  createServerClient,
+  parseCookieHeader,
+  serializeCookieHeader,
+} from "@supabase/ssr";
 
-export const getServerClient = (request: Request) => {
+const getServerClient = (request: Request) => {
+  const cookieHeader = request.headers.get("cookie") ?? "";
   const headers = new Headers();
+
   const supabase = createServerClient(
-    process.env.SUPABASE_URL!,
-    process.env.SUPABASE_ANON_KEY!,
+    process.env.VITE_SUPABASE_URL!,
+    process.env.VITE_SUPABASE_KEY!,
     {
       cookies: {
-        getAll() {
-          return parseCookieHeader(request.headers.get("Cookie") ?? "") ?? {};
-        },
-        setAll(cookiesToSet) {
-          cookiesToSet.forEach(({ name, value, options }) =>
+        getAll: () => parseCookieHeader(cookieHeader),
+        setAll: (cookies) => {
+          for (const cookie of cookies) {
             headers.append(
-              "Set-Cookie",
-              serializeCookieHeader(name, value, options)
-            )
-          );
+              "set-cookie",
+              serializeCookieHeader(cookie.name, cookie.value, cookie.options)
+            );
+          }
         },
       },
     }
   );
 
-  return { client: supabase, headers: headers };
+  return { client: supabase, headers };
 };
+
+export default getServerClient;

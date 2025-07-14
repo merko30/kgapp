@@ -6,18 +6,15 @@ import getServerClient from "~/lib/supabase";
 import { userContext } from "~/context";
 import { redirect } from "react-router";
 
-export const unstable_middleware: Route.unstable_MiddlewareFunction[] = [
-  async ({ request, context }) => {
-    const { client: supabase } = getServerClient(request);
-    const res = await supabase.auth.getUser();
-    console.log("res", res);
+export const loader = async ({ request, context }: Route.LoaderArgs) => {
+  const { client: supabase } = getServerClient(request);
+  const res = await supabase.auth.getUser();
 
-    if (!res.data.user) {
-      throw redirect("/");
-    }
-    context.set(userContext, res.data.user);
-  },
-];
+  if (!res.data.user) {
+    throw redirect("/");
+  }
+  context.set(userContext, res.data.user);
+};
 
 const Dashboard = () => {
   const { t } = useTranslation();

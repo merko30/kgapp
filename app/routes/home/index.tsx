@@ -4,7 +4,6 @@ import Login from "~/components/login";
 import { Card } from "~/components/ui/card";
 import { Tabs, TabsList, TabsTrigger } from "~/components/ui/tabs";
 import type { Route } from "./+types";
-import getServerClient from "~/lib/supabase";
 
 const TABS = [
   { value: "/", label: "notifications" },
@@ -25,42 +24,13 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export async function action({ request }: Route.ActionArgs) {
-  let formData = await request.formData();
-  let email = formData.get("email")?.toString();
-  let password = formData.get("password")?.toString();
-
-  if (!email || !password) {
-    return {
-      error: "Please provide credentials",
-    };
-  } else {
-    const { client: supabaseClient } = getServerClient(request);
-    const response = await supabaseClient.auth.signInWithPassword({
-      email,
-      password,
-    });
-
-    console.log("RESPONSE", response);
-    if (response.error) {
-      return {
-        error: "wrongCredentials",
-      };
-    } else {
-      return {
-        success: true,
-      };
-    }
-  }
-}
-
-const Home = ({ actionData }: Route.ComponentProps) => {
+const Home = () => {
   const { t } = useTranslation();
 
   return (
     <div className="w-full container flex flex-col md:flex-row gap-8 md:gap-4">
       <div className="w-full md:w-1/3">
-        <Login data={actionData} />
+        <Login />
       </div>
       <div className="w-full md:w-2/3">
         <Card className="py-4">

@@ -2,24 +2,57 @@ import { useTranslation } from "react-i18next";
 import { Button } from "./ui/button";
 import { Card } from "./ui/card";
 import { Input } from "./ui/input";
-import { Form } from "react-router";
+import { Form, redirect } from "react-router";
 import { Alert } from "./ui/alert";
+import { createBrowserClient } from "@supabase/ssr";
+import { useState } from "react";
 
-const Login = ({
-  data,
-}: {
-  data?: {
-    error?: string;
-  };
-}) => {
+const Login = () => {
   const { t } = useTranslation();
+  const [error, setError] = useState<string | null>(null);
+
+  const handleLogin = async (event: React.FormEvent) => {
+    event.preventDefault();
+    const form = event.target as HTMLFormElement;
+    const formData = new FormData(form);
+    const email = formData.get("email")?.toString();
+    const password = formData.get("password")?.toString();
+    if (!email || !password) {
+      return {
+        error: "Please provide credentials",
+      };
+    }
+
+    const supabase = createBrowserClient(
+      import.meta.env.VITE_SUPABASE_URL,
+      import.meta.env.VITE_SUPABASE_KEY
+    );
+
+    const response = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+    console.log(response);
+
+    if (response.error) {
+      return {
+        error: "wrongCredentials",
+      };
+    } else if (response.data.user) {
+      return redirect("/dashboard");
+    } else {
+      return {
+        error: "unknownError",
+      };
+    }
+  };
 
   return (
     <Card className="px-4">
-      <Form method="post">
-        {data?.error && (
+      <Form onSubmit={handleLogin}>
+        {error && (
           <Alert variant="destructive" className="mb-4 text-nowrap">
-            {t(data.error ?? "wrongCredentials")}
+            {t(error ?? "wrongCredentials")}
           </Alert>
         )}
         <Input
