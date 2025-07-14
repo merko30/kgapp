@@ -4,8 +4,8 @@ import { Card } from "./ui/card";
 import { Input } from "./ui/input";
 import { Form, redirect } from "react-router";
 import { Alert } from "./ui/alert";
-import { createBrowserClient } from "@supabase/ssr";
 import { useState } from "react";
+import { supabase } from "~/lib/supabase";
 
 const Login = () => {
   const { t } = useTranslation();
@@ -22,11 +22,6 @@ const Login = () => {
         error: "Please provide credentials",
       };
     }
-
-    const supabase = createBrowserClient(
-      import.meta.env.VITE_SUPABASE_URL,
-      import.meta.env.VITE_SUPABASE_KEY
-    );
 
     const response = await supabase.auth.signInWithPassword({
       email,

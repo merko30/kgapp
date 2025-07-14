@@ -2,9 +2,10 @@ import { useTranslation } from "react-i18next";
 import { Card, CardHeader } from "~/components/ui/card";
 
 import type { Route } from "./+types";
-import getServerClient from "~/lib/supabase";
 import { userContext } from "~/context";
 import { redirect } from "react-router";
+import { useAuth } from "~/context/Auth";
+import { getServerClient } from "~/lib/supabase";
 
 export const loader = async ({ request, context }: Route.LoaderArgs) => {
   const { client: supabase } = getServerClient(request);
@@ -18,6 +19,8 @@ export const loader = async ({ request, context }: Route.LoaderArgs) => {
 
 const Dashboard = () => {
   const { t } = useTranslation();
+
+  const u = useAuth();
 
   return (
     <Card>

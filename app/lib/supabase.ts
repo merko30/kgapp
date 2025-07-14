@@ -1,10 +1,11 @@
 import {
+  createBrowserClient,
   createServerClient,
   parseCookieHeader,
   serializeCookieHeader,
 } from "@supabase/ssr";
 
-const getServerClient = (request: Request) => {
+export const getServerClient = (request: Request) => {
   const cookieHeader = request.headers.get("cookie") ?? "";
   const headers = new Headers();
 
@@ -29,4 +30,7 @@ const getServerClient = (request: Request) => {
   return { client: supabase, headers };
 };
 
-export default getServerClient;
+export const supabase = createBrowserClient(
+  import.meta.env.VITE_SUPABASE_URL,
+  import.meta.env.VITE_SUPABASE_KEY
+);

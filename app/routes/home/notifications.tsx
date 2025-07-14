@@ -1,4 +1,4 @@
-import getServerClient from "~/lib/supabase";
+import { getServerClient } from "~/lib/supabase";
 import type { Route } from "./+types";
 
 export async function loader({ request }: Route.LoaderArgs) {

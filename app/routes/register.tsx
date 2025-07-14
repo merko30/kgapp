@@ -14,7 +14,7 @@ import {
   SelectLabel,
   SelectItem,
 } from "../components/ui/select";
-import supabase from "~/lib/supabase";
+import { getServerClient } from "~/lib/supabase";
 
 export async function action({ request }: Route.ActionArgs) {
   let formData = await request.formData();
@@ -48,6 +48,7 @@ export async function action({ request }: Route.ActionArgs) {
       error: "Please provide credentials",
     };
   } else {
+    const supabase = getServerClient(request).client;
     const response = await supabase.auth.signUp({
       options: { data },
       email,

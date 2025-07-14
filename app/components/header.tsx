@@ -1,8 +1,11 @@
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
+import { useAuth } from "~/context/Auth";
 
 const Header = () => {
   const { t, i18n } = useTranslation();
+
+  const { user } = useAuth();
 
   return (
     <header className="py-6 shadow-lg sticky top-0 bg-white z-10">
@@ -40,14 +43,17 @@ const Header = () => {
                 <span className="block w-24 h-6 bg-gray-50"></span>
               </li>
             )} */}
-            {/* {!loading && !session?.user && ( */}
-            <li>
-              <a href="/register" className="tracking-widest uppercase text-sm">
-                {t("register")}
-              </a>
-            </li>
-            {/* )} */}
-            {/* {!loading && session?.user && (
+            {!user && (
+              <li>
+                <a
+                  href="/register"
+                  className="tracking-widest uppercase text-sm"
+                >
+                  {t("register")}
+                </a>
+              </li>
+            )}
+            {user && (
               <li>
                 <a
                   href="/profile"
@@ -56,7 +62,7 @@ const Header = () => {
                   Profil
                 </a>
               </li>
-            )} */}
+            )}
           </ul>
         </nav>
       </div>

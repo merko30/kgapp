@@ -13,6 +13,7 @@ import "./app.css";
 import Header from "./components/header";
 
 import "./lib/i18n";
+import { AuthProvider } from "./context/Auth";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -37,8 +38,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body className="flex flex-col min-h-screen">
-        <Header />
-        <main className="bg-gray-50 py-12 flex-1">{children}</main>
+        <AuthProvider>
+          <Header />
+          <main className="bg-gray-50 py-12 flex-1">{children}</main>
+        </AuthProvider>
         <ScrollRestoration />
         <Scripts />
       </body>
