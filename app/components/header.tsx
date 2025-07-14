@@ -1,11 +1,8 @@
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
-import useSession from "~/hooks/useSession";
 
 const Header = () => {
   const { t, i18n } = useTranslation();
-
-  const { session, loading } = useSession();
 
   return (
     <header className="py-6 shadow-lg sticky top-0 bg-white z-10">
@@ -38,22 +35,19 @@ const Header = () => {
             </span>
           </div>
           <ul className="flex space-x-4">
-            {loading && (
+            {/* {loading && (
               <li>
                 <span className="block w-24 h-6 bg-gray-50"></span>
               </li>
-            )}
-            {!loading && !session?.user && (
-              <li>
-                <a
-                  href="/register"
-                  className="tracking-widest uppercase text-sm"
-                >
-                  {t("register")}
-                </a>
-              </li>
-            )}
-            {!loading && session?.user && (
+            )} */}
+            {/* {!loading && !session?.user && ( */}
+            <li>
+              <a href="/register" className="tracking-widest uppercase text-sm">
+                {t("register")}
+              </a>
+            </li>
+            {/* )} */}
+            {/* {!loading && session?.user && (
               <li>
                 <a
                   href="/profile"
@@ -62,7 +56,7 @@ const Header = () => {
                   Profil
                 </a>
               </li>
-            )}
+            )} */}
           </ul>
         </nav>
       </div>
