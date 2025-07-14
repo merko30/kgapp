@@ -1,4 +1,3 @@
-import { useTranslation } from "react-i18next";
 import { Link, redirect } from "react-router";
 import {
   Calculator,
@@ -12,6 +11,7 @@ import {
   ShoppingCart,
   Warehouse,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 import { Card, CardHeader } from "~/components/ui/card";
 import type { Route } from "./+types";
@@ -54,6 +54,38 @@ const Section = ({
   </div>
 );
 
+const UserInformation = () => {
+  const { t } = useTranslation();
+  return (
+    <div className="flex flex-col items-center gap-4">
+      <div className="w-48 h-48 rounded-full bg-primary flex items-center justify-center text-white text-3xl font-bold mb-2">
+        {/* Avatar initials */}
+        MH
+      </div>
+      <div className="flex flex-col gap-2">
+        <h2 className="text-xl font-semibold">Merim Hasanbegovic</h2>
+        <div className="text-sm text-muted-foreground">
+          {t("deliveryAddress")}
+        </div>
+        <div className="font-medium">
+          {t("fullNameId", { name: "Merim Hasanbegovic", id: "KGCI1239" })}
+        </div>
+        <div>{t("streetAddress", { address: "67 Brookfield Dr." })}</div>
+        <div>
+          {t("cityStateCountryZip", {
+            city: "MANCHESTER",
+            state: "NEW HAMPSHIRE",
+            country: "UNITED STATES",
+            zip: "03109",
+          })}
+        </div>
+        <div className="font-medium">{t("phone", { phone: "6036476970" })}</div>
+      </div>
+    </div>
+  );
+};
+// ...existing code...
+
 const Dashboard = () => {
   const { t } = useTranslation();
 
@@ -66,75 +98,77 @@ const Dashboard = () => {
           </h1>
         </CardHeader>
         <div className="flex p-6 flex-col md:flex-row gap-4">
-          <div className="w-full md:w-1/3 bg-background">user info</div>
+          <div className="w-full md:w-1/3 bg-background">
+            <UserInformation />
+          </div>
           <div className="w-full md:w-2/3 bg-background flex flex-col gap-12">
             <Section
-              title="Isporuka"
+              title={t("deliverySection")}
               items={[
                 {
                   icon: <ShoppingCart size={48} />,
                   link: "/shipments",
-                  label: "Moje pošiljke",
+                  label: t("myShipments"),
                 },
                 {
                   icon: <PackageCheck size={48} />,
                   link: "/shipments",
-                  label: "Spremno za slanje",
+                  label: t("readyToSend"),
                 },
                 {
                   icon: <History size={48} />,
                   link: "/shipments",
-                  label: "Historija slanja",
+                  label: t("shipmentHistory"),
                 },
               ]}
             />
             <Section
-              title="Rezime naloga"
+              title={t("accountSummarySection")}
               items={[
                 {
                   icon: <Package2 size={48} />,
                   link: "/orders",
-                  label: "Narudžbe u toku",
+                  label: t("ordersInProgress"),
                 },
                 {
                   icon: <Warehouse size={48} />,
                   link: "/orders",
-                  label: "Artikli na zalihama",
+                  label: t("itemsInStock"),
                 },
                 {
                   icon: <Clipboard size={48} />,
                   link: "/invoices",
-                  label: "Računi",
+                  label: t("invoices"),
                 },
               ]}
             />
             <Section
-              title="Narudžbe"
+              title={t("ordersSection")}
               items={[
                 {
                   icon: <List size={48} />,
                   link: "/quotations",
-                  label: "Predračuni",
+                  label: t("quotations"),
                 },
                 {
                   icon: <Package size={48} />,
                   link: "/dashboard/orders/pick-up",
-                  label: "Preuzimanje narudžbe",
+                  label: t("orderPickup"),
                 },
                 {
                   icon: <ListCheck size={48} />,
                   link: "/invoices",
-                  label: "Prikaz isporuka",
+                  label: t("deliveryOverview"),
                 },
               ]}
             />
             <Section
-              title="Podešavanja"
+              title={t("settingsSection")}
               items={[
                 {
                   icon: <Calculator size={48} />,
                   link: "/dashboard/calculator",
-                  label: "Kalkulator",
+                  label: t("calculator"),
                 },
               ]}
             />

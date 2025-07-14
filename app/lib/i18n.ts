@@ -21,6 +21,27 @@ i18n
     resources: {
       en: {
         translation: {
+          // Dashboard page translations
+          deliverySection: "Delivery",
+          myShipments: "My shipments",
+          readyToSend: "Ready to send",
+          shipmentHistory: "Shipment history",
+          accountSummarySection: "Account summary",
+          ordersInProgress: "Orders in progress",
+          itemsInStock: "Items in stock",
+          invoices: "Invoices",
+          ordersSection: "Orders",
+          quotations: "Quotations",
+          orderPickup: "Order pickup",
+          deliveryOverview: "Delivery overview",
+          settingsSection: "Settings",
+          calculator: "Calculator",
+          // User info translations
+          deliveryAddress: "Delivery address",
+          fullNameId: "{{name}} {{id}}",
+          streetAddress: "{{address}}",
+          cityStateCountryZip: "{{city}}, {{state}}, {{country}} - {{zip}}",
+          phone: "PHONE: {{phone}}",
           individual: "Individual",
           business: "Business",
           register: "Register",
@@ -58,6 +79,27 @@ i18n
       },
       bs: {
         translation: {
+          // Dashboard page translations
+          deliverySection: "Isporuka",
+          myShipments: "Moje pošiljke",
+          readyToSend: "Spremno za slanje",
+          shipmentHistory: "Historija slanja",
+          accountSummarySection: "Rezime naloga",
+          ordersInProgress: "Narudžbe u toku",
+          itemsInStock: "Artikli na zalihama",
+          invoices: "Računi",
+          ordersSection: "Narudžbe",
+          quotations: "Predračuni",
+          orderPickup: "Preuzimanje narudžbe",
+          deliveryOverview: "Prikaz isporuka",
+          settingsSection: "Podešavanja",
+          calculator: "Kalkulator",
+          // User info translations
+          deliveryAddress: "Dostavna adresa",
+          fullNameId: "{{name}} {{id}}",
+          streetAddress: "{{address}}",
+          cityStateCountryZip: "{{city}}, {{state}}, {{country}} - {{zip}}",
+          phone: "Telefon: {{phone}}",
           individual: "Fizičko lice",
           business: "Biznis",
           register: "Registriraj se",
