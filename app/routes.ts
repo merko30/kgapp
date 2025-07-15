@@ -9,10 +9,13 @@ export default [
     route("legal-information", "routes/home/legal-information.tsx"),
   ]),
   route("/dashboard", "routes/dashboard/index.tsx", [
-    index("routes/dashboard/orders.tsx"),
-    index("routes/dashboard/packages.tsx"),
-    index("routes/dashboard/history.tsx"),
-    index("routes/dashboard/invoices.tsx"),
+    route("orders", "routes/dashboard/orders.tsx"),
+    route("packages", "routes/dashboard/packages.tsx"),
+    route("history", "routes/dashboard/history.tsx"),
+    route("invoices", "routes/dashboard/invoices.tsx"),
+  ]),
+  route("/shipments", "routes/shipments/index.tsx", [
+    route("create", "routes/shipments/create.tsx"),
   ]),
   route("/register", "routes/register.tsx"),
 ] satisfies RouteConfig;

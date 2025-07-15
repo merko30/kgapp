@@ -18,7 +18,7 @@ const ShipmentCreate = () => {
   const { t } = useTranslation();
 
   return (
-    <Card className="px-4 max-w-4xl mx-auto">
+    <Card className="px-4 max-w-5xl mx-auto">
       <CardTitle>{t("declareShipment")}</CardTitle>
       <Form method="post">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
@@ -83,7 +83,7 @@ const ShipmentCreate = () => {
             </Select>
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-4">
+        <div className="w-full flex flex-col md:flex-row md:items-end gap-4 mb-4">
           <div>
             <Label htmlFor="itemName">{t("itemName")}</Label>
             <Input
@@ -125,7 +125,7 @@ const ShipmentCreate = () => {
               placeholder={t("declaredValueUSD")}
             />
           </div>
-          <div>
+          <div className="flex-1">
             <Label htmlFor="itemStatus">{t("itemStatus")}</Label>
             <Select name="itemStatus" required defaultValue="USA Skladiste">
               <SelectTrigger className="w-full">
@@ -141,7 +141,7 @@ const ShipmentCreate = () => {
           </div>
         </div>
         <div className="mb-4">
-          <Label htmlFor="fileUpload">*</Label>
+          <Label htmlFor="fileUpload">{t("receipt")}*</Label>
           <Input
             id="fileUpload"
             name="fileUpload"
@@ -152,13 +152,13 @@ const ShipmentCreate = () => {
           <small>{t("uploadHelp")}</small>
         </div>
         <div className="flex items-center gap-4 mb-4">
-          <div className="bg-gray-200 rounded px-4 py-2">
+          <div className="border border-primary rounded px-4 py-2">
             {t("totalItems")}: 1
           </div>
-          <Button type="button" variant="secondary">
+          <Button type="button" variant="default" className="py-5">
             +
           </Button>
-          <Button type="button" variant="destructive">
+          <Button type="button" variant="destructive" className="py-5">
             x
           </Button>
         </div>
