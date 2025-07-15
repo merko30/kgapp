@@ -16,19 +16,18 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       const {
         data: { user },
       } = await supabase.auth.getUser();
-      console.log("us", user);
       setUser(user);
     };
 
     const { data } = supabase.auth.onAuthStateChange((event, session) => {
-      console.log({ event, session });
+      if (event === "SIGNED_IN" || event === "SIGNED_OUT") {
+        setUser(session?.user || null);
+      }
     });
 
     fetchUser();
     return () => data.subscription.unsubscribe();
   }, []);
-
-  console.log(user);
 
   return (
     <AuthContext.Provider value={{ user }}>{children}</AuthContext.Provider>

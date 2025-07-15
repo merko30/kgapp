@@ -21,6 +21,39 @@ i18n
     resources: {
       en: {
         translation: {
+          // Shipments/Create form translations
+          declareShipment: "Declare shipment",
+          storeName: "Store name",
+          courierService: "Courier service",
+          trackingNumber: "Tracking number",
+          orderDate: "Order date",
+          destinationCountry: "Destination country",
+          itemName: "Item name",
+          quantity: "Quantity",
+          itemValueUSD: "Item value (USD)",
+          declaredValueUSD: "Declared value (USD)",
+          itemStatus: "Item status",
+          uploadHelp: "Upload png, jpg, gif, or pdf file under 2MB",
+          totalItems: "Total items",
+          reset: "Reset",
+          confirm: "Confirm",
+          // Shipments/Create form translations
+          declareShipment: "Deklariši pošiljku",
+          storeName: "Naziv trgovine",
+          courierService: "Kurirska služba",
+          trackingNumber: "Broj za praćenje pošiljke",
+          orderDate: "Datum narudžbe",
+          destinationCountry: "Odredišna zemlja",
+          itemName: "Naziv artikla",
+          quantity: "Količina",
+          itemValueUSD: "Vrijednost artikla (USD)",
+          declaredValueUSD: "Deklarisana vrijednost (USD)",
+          itemStatus: "Status artikla",
+          uploadHelp:
+            "Upload tipa ekstenzije png, jpg, gif i pdf ispod 2Mb fajla",
+          totalItems: "Ukupno artikala",
+          reset: "Resetuj",
+          confirm: "Potvrdi",
           // Dashboard page translations
           deliverySection: "Delivery",
           myShipments: "My shipments",

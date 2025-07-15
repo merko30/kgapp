@@ -55,7 +55,6 @@ export async function action({ request }: Route.ActionArgs) {
       password,
     });
 
-    console.log("RESPONSE", response);
     if (response.error) {
       return {
         error: "wrongCredentials",

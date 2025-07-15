@@ -29,8 +29,6 @@ const useSession = ({
     fetchSession();
   }, []);
 
-  console.log(loading, session);
-
   return { session, loading };
 };
 

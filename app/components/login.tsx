@@ -27,7 +27,6 @@ const Login = () => {
       email,
       password,
     });
-    console.log(response);
 
     if (response.error) {
       return {
