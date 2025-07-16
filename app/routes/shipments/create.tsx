@@ -17,6 +17,7 @@ import {
 } from "../../components/ui/select";
 import { getServerClient } from "~/lib/supabase";
 import type { Route } from "./+types";
+import { getEnv } from "~/lib/env";
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: "Deklariši pošiljku | Kupi Global" }];
@@ -68,7 +69,7 @@ export const action = async ({ request }: { request: Request }) => {
 
   for await (const item of items) {
     const { data: imageData } = await client.storage
-      .from("kupiglobal")
+      .from(getEnv().s3Bucket)
       .upload(
         `/images/${item.name}-${Date.now()}.${item.fileUpload.name
           .split(".")
