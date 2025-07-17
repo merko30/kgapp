@@ -14,7 +14,8 @@ export default [
     route("history", "routes/dashboard/history.tsx"),
     route("invoices", "routes/dashboard/invoices.tsx"),
   ]),
-  route("/shipments", "routes/shipments/index.tsx", [
+  route("/shipments", "routes/shipments/root.tsx", [
+    index("routes/shipments/index.tsx"),
     route("create", "routes/shipments/create.tsx"),
   ]),
   route("/register", "routes/register.tsx"),

@@ -130,7 +130,10 @@ const ShipmentCreate = () => {
 
   return (
     <Card className="px-4 max-w-5xl mx-auto">
-      <CardTitle>{t("declareShipment")}</CardTitle>
+      <h1 className="text-xl font-semibold text-primary">
+        {t("declareShipment")}
+      </h1>
+
       <Form method="post" encType="multipart/form-data">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
           <div>

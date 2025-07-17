@@ -1,6 +1,7 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
+import Shipments from "~/routes/shipments";
 
 i18n
   // detect user language
@@ -21,6 +22,10 @@ i18n
     resources: {
       en: {
         translation: {
+          // shipments
+          shipments: "Shipments",
+          products: "Products",
+          weight: "Težina",
           // Shipments/Create form translations
           declareShipment: "Declare shipment",
           storeName: "Store name",
@@ -151,6 +156,10 @@ i18n
           phoneNumber: "Broj telefona",
           confirmPassword: "Potvrdite lozinku",
           acceptTerms: "Prihvatam uslove korištenja",
+          // shipments
+          shipments: "Pošiljke",
+          products: "Proizvodi",
+          weight: "Težina",
           // Shipments/Create form translations
           declareShipment: "Deklariši pošiljku",
           storeName: "Naziv trgovine",
