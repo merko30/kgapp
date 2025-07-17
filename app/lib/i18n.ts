@@ -1,7 +1,6 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
-import Shipments from "~/routes/shipments";
 
 i18n
   // detect user language
@@ -26,6 +25,7 @@ i18n
           shipments: "Shipments",
           products: "Products",
           weight: "Težina",
+          createOrder: "Create order",
           // Shipments/Create form translations
           declareShipment: "Declare shipment",
           storeName: "Store name",
@@ -160,6 +160,7 @@ i18n
           shipments: "Pošiljke",
           products: "Proizvodi",
           weight: "Težina",
+          createOrder: "Kreiraj narudžbu",
           // Shipments/Create form translations
           declareShipment: "Deklariši pošiljku",
           storeName: "Naziv trgovine",
