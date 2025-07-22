@@ -8,5 +8,6 @@ export type Shipment = {
     id: string;
     name: string;
     quantity: number;
+    price: number;
   }>;
 };

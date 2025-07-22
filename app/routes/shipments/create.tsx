@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { Form } from "react-router";
 import { useState } from "react";
 
-import { Card, CardTitle } from "../../components/ui/card";
+import { Card } from "../../components/ui/card";
 import { Input } from "../../components/ui/input";
 import { Label } from "../../components/ui/label";
 import { Button } from "../../components/ui/button";

@@ -29,6 +29,7 @@
     "react-router": "^7.5.3",
     "string-ts": "^2.2.1",
     "tailwind-merge": "^3.3.1",
+    "@paypal/react-paypal-js": "^7.7.0",
     "zod": "^4.0.5"
   },
   "devDependencies": {

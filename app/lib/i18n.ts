@@ -21,6 +21,10 @@ i18n
     resources: {
       en: {
         translation: {
+          cancel: "Cancel",
+          payment: "Payment",
+          selectAll: "Select all",
+          selectRow: "Select",
           // shipments
           shipments: "Shipments",
           products: "Products",
@@ -101,6 +105,10 @@ i18n
       },
       bs: {
         translation: {
+          cancel: "Poništi",
+          payment: "Plaćanje",
+          selectAll: "Odaberi sve",
+          selectRow: "Odaberi",
           // Dashboard page translations
           deliverySection: "Isporuka",
           myShipments: "Moje pošiljke",
