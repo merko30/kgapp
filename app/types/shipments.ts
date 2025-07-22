@@ -10,4 +10,10 @@ export type Shipment = {
     quantity: number;
     price: number;
   }>;
+  order?: {
+    id: string;
+    fulfillment_status?: string;
+    payment_status?: string;
+    transaction_id?: string;
+  };
 };

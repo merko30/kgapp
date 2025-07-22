@@ -21,6 +21,7 @@ i18n
     resources: {
       en: {
         translation: {
+          history: "History",
           cancel: "Cancel",
           payment: "Payment",
           selectAll: "Select all",
@@ -28,8 +29,21 @@ i18n
           // shipments
           shipments: "Shipments",
           products: "Products",
-          weight: "Težina",
+          weight: "Weight",
           createOrder: "Create order",
+          orderId: "Order ID",
+          fulfillmentStatus: "Fulfillment Status",
+          paymentStatus: "Payment Status",
+          transactionId: "Transaction ID",
+          // Statuses
+          CREATED: "Created",
+          IN_PROCESS: "In process",
+          SENT: "Sent",
+          AT_CUSTOMS: "At customs",
+          READY_FOR_DELIVERY: "Ready for delivery",
+          DELIVERED: "Delivered",
+          PAID: "Paid",
+          NOT_PAID: "Not paid",
           // Shipments/Create form translations
           declareShipment: "Declare shipment",
           storeName: "Store name",
@@ -105,6 +119,7 @@ i18n
       },
       bs: {
         translation: {
+          history: "Historija",
           cancel: "Poništi",
           payment: "Plaćanje",
           selectAll: "Odaberi sve",
@@ -169,6 +184,19 @@ i18n
           products: "Proizvodi",
           weight: "Težina",
           createOrder: "Kreiraj narudžbu",
+          orderId: "ID narudžbe",
+          fulfillmentStatus: "Status isporuke",
+          paymentStatus: "Status plaćanja",
+          transactionId: "Transakcijski ID",
+          // Statusi
+          CREATED: "Kreirano",
+          IN_PROCESS: "U procesu",
+          SENT: "Poslano",
+          AT_CUSTOMS: "Na carini",
+          READY_FOR_DELIVERY: "Spremno za dostavu",
+          DELIVERED: "Dostavljeno",
+          PAID: "Plaćeno",
+          NOT_PAID: "Nije plaćeno",
           // Shipments/Create form translations
           declareShipment: "Deklariši pošiljku",
           storeName: "Naziv trgovine",

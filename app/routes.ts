@@ -11,12 +11,12 @@ export default [
   route("/dashboard", "routes/dashboard/index.tsx", [
     route("orders", "routes/dashboard/orders.tsx"),
     route("packages", "routes/dashboard/packages.tsx"),
-    route("history", "routes/dashboard/history.tsx"),
     route("invoices", "routes/dashboard/invoices.tsx"),
   ]),
   route("/shipments", "routes/shipments/root.tsx", [
     index("routes/shipments/index.tsx"),
     route("create", "routes/shipments/create.tsx"),
+    route("history", "routes/shipments/history.tsx"),
   ]),
   route("/register", "routes/register.tsx"),
 ] satisfies RouteConfig;
